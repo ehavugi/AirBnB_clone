@@ -8,6 +8,7 @@ then
 	echo  units tests OK
 else
 	echo "Unit tests $status_code"
+	python3 -m unittest discover tests
 	exit 1
 fi
 
@@ -26,6 +27,7 @@ style_check="$(pycodestyle  */*.py *.py */*/*.py | wc -l )"
 if  [ "$style_check" -gt 1 ]
 then 
 	echo "$style_check pycodestyle check failed"
+	echo "$(pycodestyle  */*.py *.py */*/*.py)"
 	exit 1
 else
 	echo "code style in models check passed"
