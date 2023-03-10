@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import uuid
 from datetime import datetime
+from models import storage
 
 """
 Class BaseModel:
@@ -33,6 +34,8 @@ class BaseModel():
         update update_at attribute to now
         """
         self.updated_at = datetime.now()
+        storage.new(self)
+        storage.save()
         return None
 
     def to_dict(self):
@@ -40,7 +43,8 @@ class BaseModel():
         returns a dictionary contain key/values from __dict__
 
         """
-        dictRepr = self.__dict__
-        dictRepr['update_at'] = self.updated_at.isoformat()
-        dictRepr['created_at'] = self.created_at.isoformat()
+        dictRepr = self.__dict__.copy()
+        print("__dict__", self.__dict__)
+        dictRepr['updated_at'] = str(self.updated_at.isoformat())
+        dictRepr['created_at'] = str(self.created_at.isoformat())
         return dictRepr
