@@ -1,12 +1,18 @@
 #!/usr/bin/python3
+"""
+
+HBNB command reader
+
+"""
 import cmd
 from models.base_model import BaseModel
 from models.user import User
+from models.place import Place
+from models.review import Review
+from models.city import City
+from models.state import State
+from models.amenity import Amenity
 from models import storage
-
-"""
-HBNB command reader
-"""
 
 
 class HBNBCommand(cmd.Cmd):
@@ -15,9 +21,9 @@ class HBNBCommand(cmd.Cmd):
     """
     prompt = "(hbnb) "
 
-    def do_exit(self, line):
+    def do_quit(self, line):
         """
-        exit the console.
+        Quit command to exit the program
         """
         return True
 
@@ -64,6 +70,10 @@ class HBNBCommand(cmd.Cmd):
         print("update ", line)
 
     def do_create(self, line):
+        """
+        test create model.
+
+        """
         print("create : ", line)
 
 
