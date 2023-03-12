@@ -23,7 +23,7 @@ else
 	echo "pycodestyle is already installed"
 fi
 
-style_check="$(pycodestyle  */*.py *.py */*/*.py | wc -l )"
+style_check="$(pycodestyle  */*.py *.py */*/*.py */*/*/*.py | wc -l )"
 if  [ "$style_check" -gt 1 ]
 then 
 	echo "$style_check pycodestyle check failed"

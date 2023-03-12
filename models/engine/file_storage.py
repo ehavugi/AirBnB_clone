@@ -17,20 +17,26 @@ from models.review import Review
 class FileStorage():
     """
     File storage
+        methods
+            + all -- returns dictionary __objects
+            + new -- sets new  object in __objects
+            + save -- save json to file
+            + reload -- load json from file into __objects
     """
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
         """
-        return all objects in storage
+        return all objects in storage.
+
         """
         return self.__objects
 
     def new(self, obj):
         """
-        sets in __objects the obj with key <obj class name>.id
-
+        sets in __objects the obj with
+            key <obj class name>.id
         """
         key = str(obj.__class__.__name__) + "." + str(obj.id)
 
@@ -47,7 +53,7 @@ class FileStorage():
 
     def reload(self):
         """
-        Load the objects from a json file
+        Load the objects from a json file.
         """
         if os.path.isfile(self.__file_path):
             with open(self.__file_path, "r") as f:

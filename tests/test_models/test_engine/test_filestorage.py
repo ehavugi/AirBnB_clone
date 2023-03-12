@@ -14,7 +14,22 @@ class TestFileStorage(unittest.TestCase):
     """
     Test cases for fileStorage
     """
-    testCase = BaseModel()
 
-    def test_class_name(self):
-        pass
+    def test_reload(self):
+        """
+        storage.all() returns a dictionary type
+        """
+        storage.reload()
+        new = storage.all()
+        self.assertIsInstance(new, dict)
+
+    def test_new(self):
+        """
+        Increases  number of stored elements by 1
+        """
+        old = (storage.all()).copy()
+        testCase = BaseModel()
+        testCase.my_number = 1001
+        storage.new(testCase)
+        new = storage.all()
+        self.assertEqual(len(new) - len(old), 1)

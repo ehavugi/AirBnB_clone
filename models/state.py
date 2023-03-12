@@ -13,3 +13,10 @@ class State(BaseModel):
         attr: name
     """
     name = ""
+
+    def __init__(self, *args, **kwargs):
+        """
+        initialize State
+
+        """
+        super().__init__(*args, **kwargs)

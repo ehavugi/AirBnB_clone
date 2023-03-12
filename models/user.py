@@ -5,6 +5,7 @@ Defines User Class
    +  attributes
 """
 from models.base_model import BaseModel
+from datetime import datetime
 
 
 class User(BaseModel):
@@ -20,3 +21,18 @@ class User(BaseModel):
     password = ""
     last_name = ""
     first_name = ""
+
+    def __init__(self, *args, **kwargs):
+        """
+            Initialization to help with deserialization
+
+        """
+        tf = "%Y-%m-%dT%H:%M:%S.%f"
+        if len(kwargs) != 0:
+            for key in kwargs:
+                if key in ['created_at', 'updated_at']:
+                    self.__dict__[key] = datetime.strptime(kwargs[key], tf)
+                elif key != "__class__":
+                    self.__dict__[key] = kwargs[key]
+        else:
+            super().__init__()
