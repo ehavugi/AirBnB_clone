@@ -14,7 +14,7 @@ class BaseModel():
     """
     BaseModel --v0
     """
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """
         Initialize the model
 
@@ -27,7 +27,8 @@ class BaseModel():
         """
         str representation of the instance
         """
-        return "[{}] ({}) {}".format(self.id, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.__name__,
+                                     self.id, self.__dict__)
 
     def save(self):
         """
@@ -44,7 +45,7 @@ class BaseModel():
 
         """
         dictRepr = self.__dict__.copy()
-        print("__dict__", self.__dict__)
         dictRepr['updated_at'] = str(self.updated_at.isoformat())
         dictRepr['created_at'] = str(self.created_at.isoformat())
+        dictRepr['__class__'] = str(self.__class__.__name__)
         return dictRepr
