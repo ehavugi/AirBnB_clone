@@ -6,12 +6,12 @@ Initial work on Alx AirBnB clone
 
 ## Mandatory
 - [x] README, AUTHORS
-- [ ] Be pycodestyle compliant!
+- [x] Be pycodestyle compliant!
 - [ ] Unittests
 - [x] BaseModel
 - [x] Create BaseModel from dictionary
 - [ ] Store first object
-- [ ] Console 0.0.1
+- [x] Console 0.0.1
 - [x] Console 0.1
 - [x] First User
 - [x] More classes!
