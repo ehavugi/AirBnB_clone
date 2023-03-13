@@ -167,7 +167,8 @@ class HBNBCommand(cmd.Cmd):
         Overide default response to get custom cmd processing.
 
         """
-
+        if line == "":
+            return line
         if line != "":
             a = line.split('.')
 

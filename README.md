@@ -6,21 +6,21 @@ Initial work on Alx AirBnB clone
 
 ## Mandatory
 - [x] README, AUTHORS
-- [x] Be pycodestyle compliant!
+- [ ] Be pycodestyle compliant!
 - [ ] Unittests
 - [x] BaseModel
 - [x] Create BaseModel from dictionary
 - [ ] Store first object
-- [x] Console 0.0.1
-- [ ] Console 0.1
-- [ ] First User
+- [ ] Console 0.0.1
+- [x] Console 0.1
+- [x] First User
 - [x] More classes!
-- [ ] Console 1.0
+- [x] Console 1.0
 ## Advanced 
-- [ ]  All instances by class name
-- [ ] Count instances
-- [ ] Show
-- [ ] Destroy
-- [ ] Update
-- [ ] Update from dictionary
+- [x]  All instances by class name
+- [x] Count instances
+- [x] Show
+- [x] Destroy
+- [x] Update
+- [x] Update from dictionary
 - [ ] Unittests for the Console!
