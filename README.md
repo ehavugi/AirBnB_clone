@@ -11,7 +11,7 @@ Initial work on Alx AirBnB clone
 - [x] BaseModel
 - [x] Create BaseModel from dictionary
 - [ ] Store first object
-- [ ] Console 0.0.1
+- [x] Console 0.0.1
 - [ ] Console 0.1
 - [ ] First User
 - [x] More classes!

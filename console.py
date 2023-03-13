@@ -13,6 +13,7 @@ from models.city import City
 from models.state import State
 from models.amenity import Amenity
 from models import storage
+import re
 
 
 class HBNBCommand(cmd.Cmd):
@@ -88,8 +89,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_all(self, line):
-        """
-        """
+        """return all"""
         elements = storage.all()
         a_l = []
         if line:
@@ -138,7 +138,8 @@ class HBNBCommand(cmd.Cmd):
             return
         attr = args[2]
         value = args[3]
-        value = type(getattr(instance, attr))(value)
+        if hasattr(instance, attr):
+            value = type(getattr(instance, attr))(value)
         setattr(instance, attr, value)
         storage.save()
 
@@ -160,6 +161,70 @@ class HBNBCommand(cmd.Cmd):
                 print(obj.id)
             else:
                 print("** class doesn't exist **")
+
+    def precmd(self, line):
+        """
+        Overide default response to get custom cmd processing.
+
+        """
+
+        if line != "":
+            a = line.split('.')
+
+            # Process the update command
+            m = re.match(r"(\S+)\.update\((\S+), (\S+), (\S+)\)", line)
+            if m:
+                m = m.groups()
+                m = [str(i).strip('\"') if type(i) == str else i for i in m]
+                className = m[0]
+                id_ = m[1]
+                attrName = m[2]
+                value = m[3]
+                if className in globals():
+                    new_ = "update {} {} {} {}".format(className,
+                                                       id_, attrName, value)
+                    return new_
+                return line
+            m = re.match(r"(\S+)\.update\((\S+),(.*)\)", line)
+
+            if m:
+                m = m.groups()
+                m = [str(i).strip('\"') for i in m]
+                if len(m) == 3:
+                    className = m[0]
+                    if not (className in globals()):
+                        return line
+                    id_ = m[1]
+                    dict_ = eval(m[2])
+                    cmd_ = ""
+                    if type(dict_) == dict:
+                        for key, value in dict_.items():
+                            new = "update {} {} {} {}".format(className, id_,
+                                                              key, value)
+                            if cmd_ == "":
+                                self.onecmd(new)
+                        return ""
+                    else:
+                        print('Uuuh', m)
+            if len(a) == 2 and a[1] == "count()":
+                count = 0
+                for key in storage.all().keys():
+                    if key.split(".")[0] == a[0]:
+                        count += 1
+                print(count)
+                return ""
+            if len(a) == 2 and a[1] == "all()":
+                if a[0] in globals():
+                    return "all {}".format(a[0])
+            if len(a) == 2 and a[1].startswith("show"):
+                if a[0] in globals():
+                    b = a[1].split('"')[1]
+                    return "show {} {}".format(a[0], b)
+            if len(a) == 2 and a[1].startswith("destroy"):
+                if a[0] in globals():
+                    b = a[1].split('"')[1]
+                    return "destroy {} {}".format(a[0], b)
+            return (line)
 
 
 if __name__ == '__main__':
