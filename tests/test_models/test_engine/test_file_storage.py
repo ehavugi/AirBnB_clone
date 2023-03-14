@@ -15,7 +15,7 @@ class TestFileStorage(unittest.TestCase):
     Test cases for fileStorage
     """
 
-    def test_reload(self):
+    def test_reload1(self):
         """
         storage.all() returns a dictionary type
         """
@@ -33,3 +33,16 @@ class TestFileStorage(unittest.TestCase):
         storage.new(testCase)
         new = storage.all()
         self.assertEqual(len(new) - len(old), 1)
+
+    def test_reload(self):
+        """
+        test reloading the model
+        """
+        storage.reload()
+        count_old = len(storage.all())
+        sample = BaseModel()
+        sample.save()
+        storage.save()
+        storage.reload()
+        count_new = len(storage.all())
+        self.assertEqual(count_new - count_old, 1)

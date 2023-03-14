@@ -7,7 +7,7 @@ Initial work on Alx AirBnB clone
 ## Mandatory
 - [x] README, AUTHORS
 - [x] Be pycodestyle compliant!
-- [ ] Unittests
+- [x] Unittests
 - [x] BaseModel
 - [x] Create BaseModel from dictionary
 - [ ] Store first object
