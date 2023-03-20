@@ -4,6 +4,9 @@ footer{
 	width: 100%;
 	bottom:0px;
 	position:fixed;
+	border-top-color:#CCCCCC;
+	border-top-width:1px;
+	border-top-style:solid;
 }
 footer p{
 	text-align: center;

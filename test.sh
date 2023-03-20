@@ -35,3 +35,12 @@ fi
 
 # self check test
 #shell_check=shellcheck "$0"
+
+# validate html and css from select folders
+python3 w3c_validator.py web_static/*.html
+status=$?
+if [ "$status" -ne 0 ]
+then
+	exit "$status"
+fi
+python3 w3c_validator.py web_static/styles/*.css
