@@ -9,8 +9,8 @@ FOCUS <b>HTML CSS, Front-end</b>
 - [x] Head styling
 - [x] CSS files
 - [x] Zoning done!
-- [ ] Search!
-- [ ] More filters
+- [x] Search!
+- [x] More filters
 - [ ] It's (h)over
 - [ ] Display results
 - [ ] More details
