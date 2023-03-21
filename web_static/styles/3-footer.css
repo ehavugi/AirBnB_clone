@@ -1,14 +1,12 @@
 footer{
-	color: #00FF00;
-	height: 60px;
-	width: 100%;
-	bottom:0px;
-	position:fixed;
-	border-top-color:#CCCCCC;
-	border-top-width:1px;
-	border-top-style:solid;
+ background-color:#00FF00;
+ height:70px;
+ width:100%;
+ bottom:0px;
+ position: fixed;
 }
+
 footer p{
 	text-align: center;
-	padding:10px 0;
+    padding: 10px 0;
 }
