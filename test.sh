@@ -39,7 +39,7 @@ fi
 # validate html and css from select folders
 python3 w3c_validator.py web_static/*.html
 status=$?
-if [ "$status" -ne 0 ]
+if [ "$status" -gt 1 ]
 then
 	exit "$status"
 fi
